@@ -23,21 +23,21 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
         position: relative;
         background: #F9D96E;
+        overflow: hidden;
     }
 
     .header-image {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* ALWAYS shows full image */
+        object-fit: contain;
     }
 
     /* MENU BUTTONS */
     .menu-buttons {
         position: absolute;
-        top: 30%; /* adjust as needed */
+        top: 30%;
         left: 50%;
         transform: translateX(-50%);
         width: 100%;
@@ -71,12 +71,12 @@
         transform: scale(1.06);
     }
 
-    /* TABLETS (2–3 buttons per row) */
+    /* TABLETS */
     @media (max-width: 992px) {
         .menu-buttons {
             flex-wrap: wrap;
             gap: 18px;
-            top: 70%;
+            top: 65%;
         }
         .menu-buttons a {
             width: 30%;
@@ -85,21 +85,27 @@
         }
     }
 
-    /* MOBILE → EXACT REQUIREMENT: 2 BUTTONS PER ROW */
+    /* MOBILE FIX — Gallery button now appears */
     @media (max-width: 600px) {
+        .header-img-box {
+            height: 85vh; /* more space for buttons */
+            overflow: visible; /* PREVENT CUTTING OFF BUTTONS */
+        }
+
         .menu-buttons {
             flex-wrap: wrap;
             gap: 15px;
-            top: 72%;
+            top: 60%; /* moved UP so all 5 buttons fit */
         }
+
         .menu-buttons a {
-            width: 45%; /* 2 buttons per line */
+            width: 45%; 
             padding: 10px;
             font-size: 15px;
         }
     }
 
-    /* SMALL MOBILE SCREENS */
+    /* Extra small phones */
     @media (max-width: 420px) {
         .menu-buttons a {
             width: 48%;
