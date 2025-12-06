@@ -19,102 +19,88 @@
     /* HEADER IMAGE */
     .header-img-box {
         width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        background: #F9D96E;
-        overflow: hidden;
+        padding-top: 20px;
     }
 
     .header-image {
         width: 100%;
-        height: 100%;
-        object-fit: contain;
+        max-width: 650px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
     }
 
-    /* MENU BUTTONS */
+    /* MENU BUTTONS POSITIONED UNDER THE HEADING */
+.menu-buttons {
+    position: absolute;
+    top: 25%;               /* ⬅ Adjust this to move buttons exactly under heading */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 900px;
+
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: nowrap;
+
+    z-index: 10;
+}
+
+.menu-buttons a {
+    background: #0A5555;
+    color: #F9D96E;
+    padding: 14px 26px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+    transition: 0.25s ease-in-out;
+    white-space: nowrap;
+}
+
+/* TABLET */
+@media (max-width: 992px) {
     .menu-buttons {
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 1000px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 25px;
-        flex-wrap: nowrap;
-
-        padding: 0 20px;
-        z-index: 10;
+        top: 66%;    /* Adjust for tablets */
+        flex-wrap: wrap;
+        gap: 18px;
     }
-
     .menu-buttons a {
-        background: #0A5555;
-        color: #F9D96E;
-        padding: 14px 28px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: 600;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-        transition: 0.25s ease-in-out;
-        white-space: nowrap;
+        font-size: 16px;
+        padding: 12px 20px;
     }
+}
 
-    .menu-buttons a:hover {
-        background: #063f3f;
-        transform: scale(1.06);
+/* MOBILE — 2 BUTTONS PER ROW */
+@media (max-width: 600px) {
+    .menu-buttons {
+        top: 70%;   /* Position adjusted for mobile */
+        flex-wrap: wrap;
+        gap: 14px;
     }
-
-    /* TABLETS */
-    @media (max-width: 992px) {
-        .menu-buttons {
-            flex-wrap: wrap;
-            gap: 18px;
-            top: 65%;
-        }
-        .menu-buttons a {
-            width: 30%;
-            padding: 12px;
-            font-size: 16px;
-        }
+    .menu-buttons a {
+        width: 45%; /* EXACT 2 buttons per row */
+        padding: 10px 14px;
+        font-size: 15px;
     }
+}
 
-    /* MOBILE FIX — Gallery button now appears */
-    @media (max-width: 600px) {
-        .header-img-box {
-            height: 85vh; /* more space for buttons */
-            overflow: visible; /* PREVENT CUTTING OFF BUTTONS */
-        }
-
-        .menu-buttons {
-            flex-wrap: wrap;
-            gap: 15px;
-            top: 60%; /* moved UP so all 5 buttons fit */
-        }
-
-        .menu-buttons a {
-            width: 45%; 
-            padding: 10px;
-            font-size: 15px;
-        }
+/* SMALL MOBILES */
+@media (max-width: 400px) {
+    .menu-buttons {
+        top: 72%;
     }
-
-    /* Extra small phones */
-    @media (max-width: 420px) {
-        .menu-buttons a {
-            width: 48%;
-        }
+    .menu-buttons a {
+        width: 48%;
     }
+}
+
 
     /* FOOTER */
     footer {
-        margin-top: 10px;
+        margin-top: 40px;
         padding: 18px;
         background: #0A5555;
         color: #F9D96E;
@@ -129,15 +115,15 @@
 
 <div class="header-img-box">
     <img src="images/she-cares-new-03.png" class="header-image" alt="She Cares Header">
+</div>
 
-    <!-- MAIN BUTTONS -->
-    <div class="menu-buttons">
-        <a href="pages/daycare.html">Day Care</a>
-        <a href="pages/yoga.html">Yoga</a>
-        <a href="pages/meditation.html">Meditation</a>
-        <a href="pages/food.html">Food</a>
-        <a href="pages/gallery.html">Gallery</a>
-    </div>
+<!-- MAIN BUTTONS -->
+<div class="menu-buttons">
+    <a href="pages/daycare.html">Day Care</a>
+    <a href="pages/yoga.html">Yoga</a>
+    <a href="pages/meditation.html">Meditation</a>
+    <a href="pages/food.html">Food</a>
+    <a href="pages/gallery.html">Gallery</a>
 </div>
 
 <footer>
