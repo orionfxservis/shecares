@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHE CARES – Gallery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #F9D96E;
+        color: #0A5555;
+        text-align: center;
+    }
+
+    /* HEADER IMAGE — SAME AS INDEX */
+    .header-img-box {
+        width: 100%;
+        background: #F9D96E;
+        padding-top: 10px;
+        text-align: center;
+    }
+
+    .header-image {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        border-bottom: 4px solid #0A5555;
+    }
+
+    /* PAGE TITLE */
+    h2 {
+        margin-top: 20px;
+        color: #0A5555;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    /* GALLERY GRID */
+    .gallery-container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 20px auto 40px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 15px;
+    }
+
+    .gallery-container img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+        transition: 0.25s ease-in-out;
+    }
+
+    .gallery-container img:hover {
+        transform: scale(1.06);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+        display: inline-block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background: #0A5555;
+        color: #F9D96E;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+
+    .back-btn:hover {
+        background: #063f3f;
+        transform: scale(1.05);
+    }
+
+    /* MOBILE */
+    @media(max-width: 480px) {
+        h2 {
+            font-size: 22px;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+<!-- HEADER IMAGE (same as index page) -->
+<div class="header-img-box">
+    <img src="../images/she-cares-01.jpg" class="header-image" alt="She Cares Header">
+</div>
+
+<h2>Our Gallery</h2>
+
+<!-- GALLERY GRID -->
+<div class="gallery-container">
+    <!-- Replace these sample images -->
+    <img src="../images/gallery1.jpg" alt="">
+    <img src="../images/gallery2.jpg" alt="">
+    <img src="../images/gallery3.jpg" alt="">
+    <img src="../images/gallery4.jpg" alt="">
+    <img src="../images/gallery5.jpg" alt="">
+    <img src="../images/gallery6.jpg" alt="">
+</div>
+
+<!-- BACK TO HOME -->
+<a href="../index.html" class="back-btn">← Back to Home</a>
+
+</body>
+</html>

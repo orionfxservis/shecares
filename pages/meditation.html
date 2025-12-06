@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHE CARES – Meditation Admission</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #F9D96E;
+        color: #0A5555;
+    }
+
+    .header {
+        background: #F9D96E;
+        padding: 15px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .header a {
+        text-decoration: none;
+        color: #0A5555;
+    }
+
+    .header a:hover {
+        color: #063f3f;
+    }
+
+    .header-img-box {
+        width: 100%;
+        padding: 10px 0 0 0;
+        text-align: center;
+    }
+
+    .header-image {
+        width: 100%;
+        max-width: 650px;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .form-box {
+        background: white;
+        width: 90%;
+        max-width: 600px;
+        margin: 20px auto 40px auto;
+        padding: 25px;
+        border-radius: 14px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .form-box h2 {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #0A5555;
+        font-weight: 700;
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        border: 2px solid #0A5555;
+        border-radius: 10px;
+        font-size: 15px;
+        outline: none;
+    }
+
+    textarea {
+        height: 80px;
+        resize: none;
+    }
+
+    .submit-btn {
+        width: 100%;
+        margin-top: 25px;
+        padding: 14px;
+        background: #0A5555;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.25s ease-in-out;
+    }
+
+    .submit-btn:hover {
+        background: #063f3f;
+    }
+
+    #sentMessage {
+        display: none;
+        margin-top: 20px;
+        background: #0A5555;
+        color: white;
+        padding: 12px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    @media(max-width: 480px) {
+        .form-box {
+            padding: 20px;
+        }
+        .submit-btn {
+            font-size: 16px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <a href="../index.html">← Back to Home</a>
+</div>
+
+<div class="header-img-box">
+    <img src="../images/she-cares-01.jpg" class="header-image" alt="Meditation">
+</div>
+
+<div class="form-box">
+    <h2>Meditation Admission Form</h2>
+
+    <form id="meditationForm">
+
+        <label>Your Name</label>
+        <input type="text" id="name" required>
+
+        <label>Contact Number</label>
+        <input type="tel" id="contact" required>
+
+        <label>Home Address</label>
+        <textarea id="address" required></textarea>
+
+        <label>Preferred Time</label>
+        <select id="session" required>
+            <option value="">Select Time</option>
+            <option value="Morning">Morning</option>
+            <option value="Evening">Evening</option>
+        </select>
+
+        <label>Days</label>
+        <select id="days" required>
+            <option value="">Select Days</option>
+            <option value="Mon / Wed / Friday">Mon / Wed / Friday</option>
+            <option value="Tues / Thurs / Sat">Tues / Thurs / Sat</option>
+        </select>
+
+        <button class="submit-btn" type="button" onclick="sendWhatsApp()">Submit Request</button>
+
+    </form>
+
+    <div id="sentMessage">Your request has been sent successfully!</div>
+</div>
+
+
+<script>
+function sendWhatsApp() {
+    let name = document.getElementById("name").value;
+    let contact = document.getElementById("contact").value;
+    let address = document.getElementById("address").value;
+    let session = document.getElementById("session").value;
+    let days = document.getElementById("days").value;
+
+    if (!name || !contact || !address || !session || !days) {
+        alert("Please fill out the entire form.");
+        return;
+    }
+
+    let phone = "YOUR_WHATSAPP_NUMBER";
+
+    let message =
+        "SHE CARES – Meditation Admission:%0A%0A" +
+        "Name: " + name + "%0A" +
+        "Contact: " + contact + "%0A" +
+        "Address: " + address + "%0A" +
+        "Preferred Time: " + session + "%0A" +
+        "Days: " + days;
+
+    let url = "https://wa.me/" + phone + "?text=" + message;
+
+    window.open(url, "_blank");
+
+    document.getElementById("sentMessage").style.display = "block";
+}
+</script>
+
+</body>
+</html>
