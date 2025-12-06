@@ -31,9 +31,10 @@
     }
 
     /* MENU BUTTONS POSITIONED UNDER THE HEADING */
+/* MENU BUTTONS - ALWAYS UNDER HEADING */
 .menu-buttons {
     position: absolute;
-    top: 30%;               /* ⬅ Adjust this to move buttons exactly under heading */
+    top: 30%;                 /* Dynamically adjusts by screen width */
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -41,7 +42,7 @@
 
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 22px;
     flex-wrap: nowrap;
 
     z-index: 10;
@@ -60,42 +61,46 @@
     white-space: nowrap;
 }
 
-/* TABLET */
+/* TABLETS */
 @media (max-width: 992px) {
     .menu-buttons {
-        top: 66%;    /* Adjust for tablets */
+        top: 52vw;   /* moves with the image naturally */
         flex-wrap: wrap;
         gap: 18px;
     }
+
     .menu-buttons a {
-        font-size: 16px;
         padding: 12px 20px;
+        font-size: 16px;
     }
 }
 
-/* MOBILE — 2 BUTTONS PER ROW */
+/* MOBILE (2 BUTTONS PER ROW) */
 @media (max-width: 600px) {
     .menu-buttons {
-        top: 70%;   /* Position adjusted for mobile */
+        top: 60vw;   /* stable placement on all mobiles */
         flex-wrap: wrap;
         gap: 14px;
     }
+
     .menu-buttons a {
-        width: 45%; /* EXACT 2 buttons per row */
+        width: 45%;  /* EXACT 2 per row */
         padding: 10px 14px;
         font-size: 15px;
     }
 }
 
-/* SMALL MOBILES */
+/* VERY SMALL DEVICES */
 @media (max-width: 400px) {
     .menu-buttons {
-        top: 72%;
+        top: 65vw;
     }
+
     .menu-buttons a {
         width: 48%;
     }
 }
+
 
 
     /* FOOTER */
