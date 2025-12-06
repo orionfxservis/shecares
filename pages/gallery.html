@@ -16,7 +16,7 @@
         text-align: center;
     }
 
-    /* HEADER IMAGE — SAME AS INDEX */
+    /* HEADER IMAGE */
     .header-img-box {
         width: 100%;
         background: #F9D96E;
@@ -31,40 +31,89 @@
         border-bottom: 4px solid #0A5555;
     }
 
-    /* PAGE TITLE */
+    /* TITLE */
     h2 {
-        margin-top: 20px;
+        margin-top: 25px;
         color: #0A5555;
-        font-size: 28px;
+        font-size: 30px;
         font-weight: 700;
     }
 
-    /* GALLERY GRID */
-    .gallery-container {
+    /* SLIDER WRAPPER */
+    .slider {
+        margin: 25px auto;
         width: 90%;
-        max-width: 1000px;
-        margin: 20px auto 40px auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 15px;
+        max-width: 900px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     }
 
-    .gallery-container img {
+    /* SLIDE TRACK */
+    .slides {
+        display: flex;
         width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-        transition: 0.25s ease-in-out;
+        transition: transform 0.5s ease-in-out;
     }
 
-    .gallery-container img:hover {
-        transform: scale(1.06);
-        box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    /* EACH IMAGE */
+    .slides img {
+        width: 100%;
+        flex-shrink: 0;
+        border-radius: 14px;
+    }
+
+    /* ARROWS */
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #0A5555;
+        color: #F9D96E;
+        padding: 12px 14px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+        user-select: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        transition: 0.2s;
+    }
+
+    .arrow:hover {
+        background: #063f3f;
+    }
+
+    .arrow-left { left: 10px; }
+    .arrow-right { right: 10px; }
+
+    /* DOT INDICATORS */
+    .dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        background: #0A5555;
+        border-radius: 50%;
+        opacity: 0.4;
+        transition: 0.3s;
+    }
+
+    .dot.active {
+        opacity: 1;
+        transform: scale(1.2);
     }
 
     /* BACK BUTTON */
     .back-btn {
         display: inline-block;
-        margin: 20px auto;
+        margin: 30px auto;
         padding: 10px 20px;
         background: #0A5555;
         color: #F9D96E;
@@ -81,8 +130,10 @@
 
     /* MOBILE */
     @media(max-width: 480px) {
-        h2 {
-            font-size: 22px;
+        h2 { font-size: 24px; }
+        .arrow {
+            padding: 8px 10px;
+            font-size: 16px;
         }
     }
 </style>
@@ -90,26 +141,73 @@
 </head>
 <body>
 
-<!-- HEADER IMAGE (same as index page) -->
+<!-- HEADER -->
 <div class="header-img-box">
-    <img src="../images/she-cares-01.jpg" class="header-image" alt="She Cares Header">
+    <img src="../images/she-cares.jpg" class="header-image" alt="She Cares Header">
 </div>
 
 <h2>Our Gallery</h2>
 
-<!-- GALLERY GRID -->
-<div class="gallery-container">
-    <!-- Replace these sample images -->
-    <img src="../images/gallery1.jpg" alt="">
-    <img src="../images/gallery2.jpg" alt="">
-    <img src="../images/gallery3.jpg" alt="">
-    <img src="../images/gallery4.jpg" alt="">
-    <img src="../images/gallery5.jpg" alt="">
-    <img src="../images/gallery6.jpg" alt="">
+<!-- IMAGE SLIDER -->
+<div class="slider">
+    <div class="slides">
+        <img src="../images/gallery1.jpg" alt="">
+        <img src="../images/gallery2.jpg" alt="">
+        <img src="../images/gallery3.jpg" alt="">
+        <img src="../images/gallery4.jpg" alt="">
+        <img src="../images/gallery5.jpg" alt="">
+        <img src="../images/gallery6.jpg" alt="">
+    </div>
+
+    <!-- ARROWS -->
+    <div class="arrow arrow-left" onclick="moveSlide(-1)">❮</div>
+    <div class="arrow arrow-right" onclick="moveSlide(1)">❯</div>
 </div>
 
-<!-- BACK TO HOME -->
+<!-- DOTS -->
+<div class="dots">
+    <div class="dot active" onclick="goToSlide(0)"></div>
+    <div class="dot" onclick="goToSlide(1)"></div>
+    <div class="dot" onclick="goToSlide(2)"></div>
+    <div class="dot" onclick="goToSlide(3)"></div>
+    <div class="dot" onclick="goToSlide(4)"></div>
+    <div class="dot" onclick="goToSlide(5)"></div>
+</div>
+
+<!-- BACK BUTTON -->
 <a href="../index.html" class="back-btn">← Back to Home</a>
+
+<script>
+let slideIndex = 0;
+const slides = document.querySelector('.slides');
+const dots = document.querySelectorAll('.dot');
+const totalSlides = dots.length;
+
+function updateSlider() {
+    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === slideIndex));
+}
+
+function moveSlide(step) {
+    slideIndex = (slideIndex + step + totalSlides) % totalSlides;
+    updateSlider();
+}
+
+function goToSlide(index) {
+    slideIndex = index;
+    updateSlider();
+}
+
+/* Swipe Support for Mobile */
+let startX = 0;
+
+slides.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+slides.addEventListener('touchend', e => {
+    let endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) moveSlide(1);
+    if (endX - startX > 50) moveSlide(-1);
+});
+</script>
 
 </body>
 </html>
