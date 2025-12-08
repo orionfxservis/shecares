@@ -30,11 +30,11 @@
         margin: 0 auto;
     }
 
-    /* BUTTON WRAPPER (NORMAL FLOW – NO ABSOLUTE POSITIONING) */
+    /* BUTTONS WRAPPER (LAPTOP LOOK — KEEPING IT SAME) */
     .menu-buttons {
         width: 100%;
         max-width: 900px;
-        margin: -350px auto 320px auto; /* space from image */
+        margin: -350px auto 320px auto; /* laptop look */
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -55,35 +55,49 @@
         white-space: nowrap;
     }
 
-    /* LAPTOP — ALL BUTTONS ONE ROW */
+    /* LAPTOP — ALL BUTTONS ONE LINE */
     @media (min-width: 992px) {
         .menu-buttons {
             flex-wrap: nowrap;
         }
     }
 
-    /* TABLETS & MOBILES */
-    @media (max-width: 768px) {
-        .menu-buttons a {
-            padding: 12px 20px;
-            font-size: 16px;
-        }
+
+    /* ---------------------- */
+    /* 📱 MOBILE FIX STARTS HERE */
+    /* ---------------------- */
+
+    /* MOBILE — MOVE BUTTONS BETWEEN HEADING & TAGLINE */
+@media (max-width: 768px) {
+
+    /* Move buttons ABOVE the image position */
+    .menu-buttons {
+        margin: 20px auto 10px auto !important;
+        position: relative;
+        top: 0;                       /* no overlap */
+        padding-top: 10px;
+        flex-wrap: wrap;
+        gap: 16px;
     }
 
-    /* MOBILE — EXACT 2 BUTTONS PER ROW */
-    @media (max-width: 600px) {
-        .menu-buttons a {
-            width: 45%;
-            padding: 10px 14px;
-            font-size: 15px;
-        }
+    /* Make sure header image comes later */
+    .header-img-box {
+        margin-top: 20px;
     }
 
-    @media (max-width: 400px) {
-        .menu-buttons a {
-            width: 48%;
-        }
+    /* 2 buttons per row */
+    .menu-buttons a {
+        width: 45%;
+        padding: 10px 14px;
+        font-size: 15px;
     }
+
+    /* Ensure tagline pushes down */
+    .tagline {
+        margin-top: 20px !important;
+    }
+}
+
 
     /* FOOTER */
     footer {
@@ -96,6 +110,7 @@
         box-shadow: 0 -4px 10px rgba(0,0,0,0.25);
     }
 </style>
+
 
 </head>
 <body>
